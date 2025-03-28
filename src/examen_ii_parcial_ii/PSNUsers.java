@@ -15,7 +15,8 @@ import java.util.Date;
 import java.io.IOException;
 
 public class PSNUsers {
-private RandomAccessFile psn;
+
+    private RandomAccessFile psn;
     public HashTable users;
 
     public PSNUsers() {
@@ -39,7 +40,9 @@ private RandomAccessFile psn;
                     int puntos = psn.readInt();
                     int cantidadTrofeos = psn.readInt();
                     String estado = psn.readUTF();
-                    users.add(nombreUsuario, posUser, uid);
+                    if (estado.equals("Si")) {
+                        users.add(nombreUsuario, posUser, uid);
+                    }
                 } else if (tipo == 1) {
                     long skipUid = psn.readLong();
                     psn.readUTF();
@@ -174,9 +177,9 @@ private RandomAccessFile psn;
                     String fecha = psn.readUTF();
                     if (trophyUid == uid) {
                         sb.append(fecha).append(" - ")
-                          .append(tipoTrofeo).append(" - ")
-                          .append(nombreJuego).append(" - ")
-                          .append(nombreDelTrofeo).append("\n");
+                                .append(tipoTrofeo).append(" - ")
+                                .append(nombreJuego).append(" - ")
+                                .append(nombreDelTrofeo).append("\n");
                     }
                 } else if (regTipo == 0) {
                     psn.readLong();
