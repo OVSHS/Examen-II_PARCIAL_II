@@ -8,7 +8,7 @@ package examen_ii_parcial_ii;
  *
  * @author Mario
  */
-public class Examen_II_PARCIAL_II {
+public class Main {
 
     /**
      * @param args the command line arguments
