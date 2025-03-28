@@ -15,8 +15,7 @@ import java.util.Date;
 import java.io.IOException;
 
 public class PSNUsers {
-
- private RandomAccessFile psn;
+private RandomAccessFile psn;
     public HashTable users;
 
     public PSNUsers() {
@@ -58,9 +57,6 @@ public class PSNUsers {
 
     public void addUser(String username) {
         if (username == null || username.trim().isEmpty()) {
-            return;
-        }
-        if (users.size() >= 1) {
             return;
         }
         if (users.search(username) != -1) {
