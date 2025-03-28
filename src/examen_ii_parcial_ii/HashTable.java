@@ -9,14 +9,14 @@ package examen_ii_parcial_ii;
  * @author Mario
  */
 public class HashTable {
-  private Entry head;
+ private Entry inicio;
 
     public void add(String username, long pos, long userId) {
         Entry nuevo = new Entry(username, pos, userId);
-        if (head == null) {
-            head = nuevo;
+        if (inicio == null) {
+            inicio = nuevo;
         } else {
-            Entry temp = head;
+            Entry temp = inicio;
             while (temp.next != null) {
                 temp = temp.next;
             }
@@ -25,14 +25,14 @@ public class HashTable {
     }
 
     public void remove(String username) {
-        if (head == null) {
+        if (inicio == null) {
             return;
         }
-        if (head.username.equals(username)) {
-            head = head.next;
+        if (inicio.username.equals(username)) {
+            inicio = inicio.next;
             return;
         }
-        Entry temp = head;
+        Entry temp = inicio;
         while (temp.next != null) {
             if (temp.next.username.equals(username)) {
                 temp.next = temp.next.next;
@@ -43,7 +43,7 @@ public class HashTable {
     }
 
     public long search(String username) {
-        Entry temp = head;
+        Entry temp = inicio;
         while (temp != null) {
             if (temp.username.equals(username)) {
                 return temp.pos;
@@ -54,7 +54,7 @@ public class HashTable {
     }
 
     public Entry findEntry(String username) {
-        Entry temp = head;
+        Entry temp = inicio;
         while (temp != null) {
             if (temp.username.equals(username)) {
                 return temp;
@@ -62,6 +62,14 @@ public class HashTable {
             temp = temp.next;
         }
         return null;
-    
+    }
+    public int size() {
+        int count = 0;
+        Entry temp = inicio;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        return count;
     }
 }
